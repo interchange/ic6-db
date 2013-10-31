@@ -19,7 +19,7 @@
 -- Current Database: `ic6`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `ic6` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE IF NOT EXISTS `ic6` DEFAULT CHARACTER SET utf8;
 
 USE `ic6`;
 
@@ -51,7 +51,7 @@ CREATE TABLE `addresses` (
   UNIQUE KEY `addresses_id` (`addresses_id`),
   KEY `addresses_users_fk` (`users_id`),
   CONSTRAINT `addresses_users_fk` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,7 +80,7 @@ CREATE TABLE `cart_products` (
   KEY `carts_id` (`carts_id`,`sku`),
   CONSTRAINT `cart_products_carts_fk` FOREIGN KEY (`carts_id`) REFERENCES `carts` (`carts_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `cart_products_products_fk` FOREIGN KEY (`sku`) REFERENCES `products` (`sku`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +115,7 @@ CREATE TABLE `carts` (
   KEY `carts_sessions_fk` (`sessions_id`),
   CONSTRAINT `carts_users_fk` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `carts_sessions_fk` FOREIGN KEY (`sessions_id`) REFERENCES `sessions` (`sessions_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,7 +146,7 @@ CREATE TABLE `group_pricing` (
   KEY `sku` (`sku`),
   CONSTRAINT `group_pricing_products_fk` FOREIGN KEY (`sku`) REFERENCES `products` (`sku`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `group_pricing_roles_fk` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`roles_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,7 +171,7 @@ CREATE TABLE `inventory` (
   `in_stock` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`sku`),
   CONSTRAINT `inventory_products_fk` FOREIGN KEY (`sku`) REFERENCES `products` (`sku`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,7 +202,7 @@ CREATE TABLE `media` (
   `active` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`media_id`),
   UNIQUE KEY `media_id` (`media_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,7 +234,7 @@ CREATE TABLE `media_displays` (
   CONSTRAINT `media_displays_media_fk` FOREIGN KEY (`media_id`) REFERENCES `media` (`media_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `media_displays_products_fk` FOREIGN KEY (`sku`) REFERENCES `products` (`sku`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `media_displays_media_types_fk` FOREIGN KEY (`media_types_id`) REFERENCES `media_types` (`media_types_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -263,7 +263,7 @@ CREATE TABLE `media_products` (
   KEY `sku` (`sku`),
   CONSTRAINT `media_products_media_fk` FOREIGN KEY (`media_id`) REFERENCES `media` (`media_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `media_products_products_fk` FOREIGN KEY (`sku`) REFERENCES `products` (`sku`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -289,7 +289,7 @@ CREATE TABLE `media_types` (
   PRIMARY KEY  (`media_types_id`),
   UNIQUE KEY `media_types_id` (`media_types_id`),
   UNIQUE KEY `type` (`type`,`scope`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -318,7 +318,7 @@ CREATE TABLE `merchandising_attributes` (
   UNIQUE KEY `merchandising_attributes_id` (`merchandising_attributes_id`),
   KEY `merchandising_attributes_merchandising_products_fk` (`merchandising_products_id`),
   CONSTRAINT `merchandising_attributes_merchandising_products_fk` FOREIGN KEY (`merchandising_products_id`) REFERENCES `merchandising_products` (`merchandising_products_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -348,7 +348,7 @@ CREATE TABLE `merchandising_products` (
   KEY `merchandising_products_related_products_fk` (`sku_related`),
   CONSTRAINT `merchandising_products_products_fk` FOREIGN KEY (`sku`) REFERENCES `products` (`sku`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `merchandising_products_related_products_fk` FOREIGN KEY (`sku_related`) REFERENCES `products` (`sku`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -385,7 +385,7 @@ CREATE TABLE `navigation` (
   PRIMARY KEY  (`navigation_id`),
   UNIQUE KEY `navigation_id` (`navigation_id`),
   UNIQUE KEY `uri` (`uri`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -412,7 +412,7 @@ CREATE TABLE `navigation_products` (
   KEY `navigation_products_navigation_fk` (`navigation_id`),
   CONSTRAINT `navigation_products_products_fk` FOREIGN KEY (`sku`) REFERENCES `products` (`sku`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `navigation_products_navigation_fk` FOREIGN KEY (`navigation_id`) REFERENCES `navigation` (`navigation_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -455,7 +455,7 @@ CREATE TABLE `orderlines` (
   KEY `order_number` (`order_number`),
   CONSTRAINT `orderlines_orders_fk` FOREIGN KEY (`order_number`) REFERENCES `orders` (`order_number`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `orderlines_products_fk` FOREIGN KEY (`sku`) REFERENCES `products` (`sku`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -481,7 +481,7 @@ CREATE TABLE `orderlines_shipping` (
   KEY `orderlines_shipping_addresses_fk` (`addresses_id`),
   CONSTRAINT `orderlines_shipping_orderlines_fk` FOREIGN KEY (`orderlines_id`) REFERENCES `orderlines` (`orderlines_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `orderlines_shipping_addresses_fk` FOREIGN KEY (`addresses_id`) REFERENCES `addresses` (`addresses_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -526,7 +526,7 @@ CREATE TABLE `orders` (
   KEY `order_number` (`order_number`),
   CONSTRAINT `orders_users_fk` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `orders_billing_address_fk` FOREIGN KEY (`billing_address`) REFERENCES `addresses` (`addresses_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -566,7 +566,7 @@ CREATE TABLE `payment_orders` (
   KEY `order_number` (`order_number`),
   CONSTRAINT `payment_orders_sessions_fk` FOREIGN KEY (`sessions_id`) REFERENCES `sessions` (`sessions_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `payment_orders_fk` FOREIGN KEY (`order_number`) REFERENCES `orders` (`order_number`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -590,7 +590,7 @@ CREATE TABLE `permissions` (
   `perm` varchar(255) NOT NULL default '',
   KEY `permissions_roles_fk` (`roles_id`),
   CONSTRAINT `permissions_roles_fk` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`roles_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -616,7 +616,7 @@ CREATE TABLE `product_attributes` (
   `value` text NOT NULL,
   PRIMARY KEY  (`product_attributes_id`),
   UNIQUE KEY `product_attributes_id` (`product_attributes_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -643,7 +643,7 @@ CREATE TABLE `product_classes` (
   `uri` varchar(500) NOT NULL default '',
   `active` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`sku_class`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -678,7 +678,7 @@ CREATE TABLE `products` (
   PRIMARY KEY  (`sku`),
   KEY `products_product_classes_fk` (`sku_class`),
   CONSTRAINT `products_product_classes_fk` FOREIGN KEY (`sku_class`) REFERENCES `product_classes` (`sku_class`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -704,7 +704,7 @@ CREATE TABLE `products_x_attributes` (
   KEY `products_x_attributes_product_attributes_fk` (`product_attributes_id`),
   CONSTRAINT `products_x_attributes_products_fk` FOREIGN KEY (`sku`) REFERENCES `products` (`sku`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `products_x_attributes_product_attributes_fk` FOREIGN KEY (`product_attributes_id`) REFERENCES `product_attributes` (`product_attributes_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -729,7 +729,7 @@ CREATE TABLE `roles` (
   `label` varchar(255) NOT NULL,
   PRIMARY KEY  (`roles_id`),
   UNIQUE KEY `roles_id` (`roles_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -756,7 +756,7 @@ CREATE TABLE `sessions` (
   `created` datetime NOT NULL,
   `modified` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   PRIMARY KEY  (`sessions_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -785,7 +785,7 @@ CREATE TABLE `settings` (
   PRIMARY KEY  (`settings_id`),
   UNIQUE KEY `settings_id` (`settings_id`),
   KEY `scope` (`scope`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -813,7 +813,7 @@ CREATE TABLE `user_attributes` (
   UNIQUE KEY `user_attributes_id` (`user_attributes_id`),
   KEY `users_id` (`users_id`),
   CONSTRAINT `user_attributes_users_fk` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -839,7 +839,7 @@ CREATE TABLE `user_roles` (
   KEY `user_roles_roles_fk` (`roles_id`),
   CONSTRAINT `user_roles_users_fk` FOREIGN KEY (`users_id`) REFERENCES `users` (`users_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_roles_roles_fk` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`roles_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -871,7 +871,7 @@ CREATE TABLE `users` (
   `active` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`users_id`),
   UNIQUE KEY `users_id` (`users_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
