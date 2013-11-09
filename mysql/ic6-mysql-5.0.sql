@@ -675,6 +675,7 @@ CREATE TABLE `products` (
   `gtin` varchar(32) NOT NULL default '',
   `canonical_sku` varchar(32) NOT NULL default '',
   `active` tinyint(1) NOT NULL default '1',
+  inventory_exempt tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`sku`),
   KEY `products_product_classes_fk` (`sku_class`),
   CONSTRAINT `products_product_classes_fk` FOREIGN KEY (`sku_class`) REFERENCES `product_classes` (`sku_class`) ON DELETE CASCADE ON UPDATE CASCADE
