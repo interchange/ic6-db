@@ -1,8 +1,9 @@
-Interchange6 database schema
-===========================
+ic6-db
+======
 
-Please review the most current version of the database in the Flowers repo
+initial ic6-db
 
-https://github.com/interchange/Flowers/schema
-
-
+# Version 0.001
+# by Jeff Boes
+# This is a draft for the Interchange6 database please be advised this might not be the most recent version.
+# Database was tested with Postgres 8.4 and MySQL 5.0
