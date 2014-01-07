@@ -1,9 +1,12 @@
 ic6-db
 ======
 
-initial ic6-db
+Interchange6 Schema
 
-# Version 0.001
-# by Jeff Boes
-# This is a draft for the Interchange6 database please be advised this might not be the most recent version.
-# Database was tested with Postgres 8.4 and MySQL 5.0
+NOTE: This repo is no longer in use please see 
+
+https://github.com/interchange/interchange6-schema
+
+https://metacpan.org/release/Interchange6-Schema
+
+
